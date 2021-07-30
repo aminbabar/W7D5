@@ -1,5 +1,6 @@
 class SubsController < ApplicationController
-    before_action :ensure_logged_in
+    before_action :ensure_logged_in, only: [:edit, :update]
+    before_action :ensure_moderator, only: [:edit, :update]
 
     def new
         @sub = Sub.new

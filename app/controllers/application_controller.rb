@@ -27,4 +27,12 @@ class ApplicationController < ActionController::Base
         session[:session_token] = nil
         @current_user = nil
     end
+
+    def moderator?
+        self.moderator.id == current_user.id
+    end
+
+    def ensure_moderator 
+        redirect_to edit_sub_url(self) if moderator?
+    end
 end
