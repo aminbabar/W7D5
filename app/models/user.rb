@@ -15,6 +15,9 @@ class User < ApplicationRecord
     attr_reader :password
     after_initialize :ensure_session_token
 
+    has_many :subs,
+    foreign_key: :user_id,
+    class_name: :Sub
 
     def self.find_by_credentials(username, password)
         @user = User.find_by(username: username)
@@ -50,5 +53,4 @@ class User < ApplicationRecord
         self.session_token ||= User.generate_session_token
     end
 
-   
 end
