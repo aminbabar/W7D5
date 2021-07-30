@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
     # C E L L L help    
-    helper_method :current_user, :logged_in?
+    helper_method :current_user, :logged_in?, :moderator?
 
     def current_user
         @current_user ||= User.find_by(session_token: session[:session_token])
@@ -29,10 +29,12 @@ class ApplicationController < ActionController::Base
     end
 
     def moderator?
-        self.moderator.id == current_user.id
+        @sub.user_id == current_user.id
     end
 
-    def ensure_moderator 
-        redirect_to edit_sub_url(self) if moderator?
+    def ensure_moderator
+        # debugger
+        @sub = Sub.find(params[:id])
+        redirect_to subs_url unless moderator?
     end
 end

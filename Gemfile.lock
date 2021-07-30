@@ -202,7 +202,7 @@ GEM
       nokogiri (~> 1.8)
 
 PLATFORMS
-  ruby
+  x86_64-darwin-20
 
 DEPENDENCIES
   annotate
@@ -233,4 +233,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   1.17.3
+   2.2.22

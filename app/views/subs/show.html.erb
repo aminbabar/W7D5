@@ -1,0 +1,13 @@
+
+<h1>This is show page for:<%= @sub.title %></h1>
+
+
+<p> 
+    <%=@sub.description%>
+</p>
+
+
+<% if moderator? %>
+    <a href="<%=edit_sub_url(@sub)%>">edit</a>
+<% end %>
+

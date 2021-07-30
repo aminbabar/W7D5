@@ -1,8 +1,9 @@
 class SubsController < ApplicationController
-    before_action :ensure_logged_in, only: [:edit, :update]
+    before_action :ensure_logged_in, only: [:edit, :update, :create, :new]
     before_action :ensure_moderator, only: [:edit, :update]
 
     def new
+        # @user = current_user
         @sub = Sub.new
         render :new
     end
@@ -31,6 +32,7 @@ class SubsController < ApplicationController
     end
 
     def edit
+        # debugger
         @sub = Sub.find(params[:id])
         render :edit
     end
